@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserManagementUseCase, UserQuotaUseCase {
@@ -72,8 +71,6 @@ public class UserService implements UserManagementUseCase, UserQuotaUseCase {
 
     @Override
     public List<UserQuota> getUsersQuota() {
-        return quotaRepository.getUsersQuota().entrySet().stream()
-                .map(entry -> new UserQuota(entry.getKey(), entry.getValue()))
-                .collect(Collectors.toList());
+        return quotaRepository.getUsersQuota();
     }
 }

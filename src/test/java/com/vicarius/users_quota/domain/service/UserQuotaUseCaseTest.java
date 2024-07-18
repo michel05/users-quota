@@ -2,6 +2,7 @@ package com.vicarius.users_quota.domain.service;
 
 import com.vicarius.users_quota.domain.exception.QuotaExceededException;
 import com.vicarius.users_quota.domain.model.User;
+import com.vicarius.users_quota.domain.model.UserQuota;
 import com.vicarius.users_quota.domain.port.in.UserQuotaUseCase;
 import com.vicarius.users_quota.domain.port.out.QuotaRepository;
 import com.vicarius.users_quota.domain.port.out.UserRepository;
@@ -13,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -80,7 +82,7 @@ class UserQuotaUseCaseTest {
     @Test
     @DisplayName("When getUsersQuota is called, then return the user's quota")
     void getUsersQuota_shouldReturnUsersQuota() {
-        var userQuotasMap = Map.of("1", 9);
+        var userQuotasMap = List.of(new UserQuota("1", 9));
 
         when(userRepositoryFactory.getUserRepository()).thenReturn(userRepository);
         when(quotaRepository.getUsersQuota()).thenReturn(userQuotasMap);
