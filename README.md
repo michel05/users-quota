@@ -26,15 +26,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Docker Compose
 
-This service is designed to be run with Docker Compose. It includes the necessary Docker Compose descriptor file (`docker-compose.yml`) at the root of the source tree to bring up the service and its dependencies.
-
-To start the service (and its associated infrastructure), navigate to the directory containing the source code on your machine and issue the following command:
 ```bash
     docker-compose up
 ```
 
-This will pull and start the necessary Docker images for you. The API will then be available at `http://localhost:8080`.
+This will pull and start the necessary Mysql image. The database will be created automatically.
 
+### Running the application
+
+```bash
+    mvn spring-boot:run
+```
+The API will then be available at `http://localhost:8080`.
 ## API Endpoints
 
 - `GET /users/{id}`: Get a user by ID
